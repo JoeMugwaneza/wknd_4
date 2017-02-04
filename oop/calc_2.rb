@@ -2,10 +2,8 @@
 # by using Inheritance. In this exercise, you must DRY up your code 
 # a different technique using Composition. Hint: Google 'Ruby Mixin Module'. (Using
 # mixin modules is how you achieve Composition with Ruby.)
-
-class SimpleCalculator
-
-  def add(first_number, second_number)
+module Common_functions
+   def add(first_number, second_number)
     first_number + second_number
   end
 
@@ -19,27 +17,18 @@ class SimpleCalculator
 
   def divide(first_number, second_number)
     first_number / second_number
-  end
+  end 
+end 
+
+
+class SimpleCalculator
+  include Common_functions
+end
 
 end
 
 class FancyCalculator
-
-  def add(first_number, second_number)
-    first_number + second_number
-  end
-
-  def subtract(first_number, second_number)
-    first_number - second_number
-  end
-
-  def multiply(first_number, second_number)
-    first_number * second_number
-  end
-
-  def divide(first_number, second_number)
-    first_number / second_number
-  end
+  include Common_functions
 
   def square_root(number)
     Math.sqrt(number)
